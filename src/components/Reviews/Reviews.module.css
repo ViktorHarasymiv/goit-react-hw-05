@@ -1,0 +1,61 @@
+.reviews_tab {
+  position: relative;
+}
+
+.review_item {
+  margin-top: 11px;
+}
+
+/* Content */
+
+.review_content {
+  cursor: default;
+
+  margin: 20px auto;
+
+  width: calc(100% - 10%);
+
+  text-overflow: ellipsis;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  border-radius: 5px;
+
+  font-size: 0.9em;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.author_tile {
+  display: flex;
+  flex-direction: column;
+}
+
+.review_author {
+  font-size: 1.1em;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
+
+.review_data {
+  font-size: 0.7em;
+}
+
+.back_button {
+  cursor: pointer;
+  position: absolute;
+  top: -15px;
+  right: 0;
+
+  transition: color 0.2s ease-in-out;
+}
+
+.back_button:hover {
+  color: #ffa500;
+  transform: scale(1.05);
+}

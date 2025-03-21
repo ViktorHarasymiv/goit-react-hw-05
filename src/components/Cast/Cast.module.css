@@ -1,0 +1,65 @@
+.cast_tab {
+  position: relative;
+}
+.cast_tile {
+  margin-top: 15px;
+
+  padding: 0.7em 2.2em;
+
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  background-color: rgba(0, 0, 0, 0.1);
+
+  border-radius: 25px;
+}
+
+.cast_avatar {
+  width: 90px;
+  height: 100px;
+
+  object-fit: cover;
+  object-position: top;
+
+  border-radius: 25px;
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.cast_about_tile {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cast_name {
+  font-size: 1.3em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.cast_role > span {
+  font-weight: 700;
+
+  font-size: 0.8em;
+
+  letter-spacing: 0.1em;
+}
+
+.cast_role {
+}
+
+.back_button {
+  cursor: pointer;
+  position: absolute;
+  top: -15px;
+  right: 0;
+
+  transition: color 0.2s ease-in-out;
+}
+
+.back_button:hover {
+  color: #ffa500;
+  transform: scale(1.05);
+}

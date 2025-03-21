@@ -1,0 +1,178 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #f9f9f9;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #e6e6e6;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  position: relative;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+main {
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  flex-grow: 1;
+}
+
+h1 {
+  font-size: 2.8em;
+  line-height: 1.1;
+}
+
+h3 {
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
+
+p {
+  font-size: 0.9em;
+}
+
+p,
+h2,
+h4 {
+  margin: 0;
+}
+
+/*  BUTTON  */
+
+button {
+  font-family: inherit;
+  padding: 0.1em 1.2em;
+
+  width: 160px;
+  height: 2rem;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1em;
+  color: inherit;
+  font-weight: inherit;
+  letter-spacing: 0.2em;
+
+  white-space: nowrap;
+
+  background-color: rgba(0, 0, 0, 0.1);
+
+  color: #e7e7e7;
+  border: 1px solid rgb(255, 165, 0);
+  border-radius: 5px;
+
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+
+  transition: all 0.2s linear;
+}
+
+button:hover {
+  color: #242424;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 3px rgb(255, 165, 0.8);
+}
+
+button:focus,
+button:focus-visible {
+  background-color: #fff;
+}
+
+/* INPUT */
+
+input {
+  margin: 0;
+  padding: 0;
+  padding-inline: 10px;
+
+  font-size: 1.3em;
+
+  color: rgba(0, 0, 0, 1);
+
+  border: none;
+}
+
+/* TEXT INPUT */
+
+input[type="text" i] {
+  padding-block: 0;
+
+  transition: backgroundColor 2s linear;
+
+  color: inherit;
+}
+
+/* SEARCH INPUT */
+
+input[type="search" i] {
+  width: 100%;
+  height: 100%;
+
+  font-size: 0.87em;
+  letter-spacing: 0.1em;
+
+  color: inherit;
+
+  list-style: none;
+  list-style-image: none;
+
+  background-color: #e7e7e7;
+
+  border-radius: 24px;
+
+  outline: none;
+
+  border: 2px solid transparent;
+}
+
+input[type="search" i]:hover {
+  background-color: rgb(40, 40, 40) !important;
+
+  transition: all 0.2s linear;
+}
