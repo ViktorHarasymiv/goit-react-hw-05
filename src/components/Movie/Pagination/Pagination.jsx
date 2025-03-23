@@ -1,32 +1,32 @@
 import React, { useState } from "react";
 
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+
 import css from "./Pagination.module.css";
 
-export default function Pagination({ totalPage, next }) {
-  const listItems = [];
-
-  for (let i = 1; i < totalPage; i++) {
-    listItems.push(i);
-  }
-
-  function CurrentPage(index) {
-    next(index);
-    console.log(index);
+export default function PaginationPage({
+  totalPage,
+  next,
+  setPage,
+  currentPage,
+}) {
+  function CurrentPage(num) {
+    setPage(num);
+    next(num);
   }
 
   return (
-    <ul className={css.buttons_list}>
-      {listItems.map((items, index) => {
-        return (
-          <button
-            className={css.page_button}
-            key={index}
-            onClick={() => CurrentPage(items)}
-          >
-            {items}
-          </button>
-        );
-      })}
-    </ul>
+    <div className="pagination">
+      <Stack spacing={2}>
+        <Pagination
+          count={totalPage}
+          page={currentPage}
+          onChange={(_, num) => CurrentPage(num)}
+          variant="outlined"
+          color="secondary"
+        />
+      </Stack>
+    </div>
   );
 }

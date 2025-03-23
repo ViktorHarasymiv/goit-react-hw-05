@@ -1,9 +1,8 @@
 .flip_card {
   position: relative;
 
-  width: 100% !important;
-
-  height: 560px;
+  width: clamp(360px, 90vw, 420px) !important;
+  height: clamp(400px, 75vh, 560px) !important;
 
   background-color: transparent;
 
@@ -14,7 +13,7 @@
 .flip_card_inner {
   position: relative;
 
-  width: 100%;
+  width: clamp(360px, 90vw, 420px) !important;
   height: 100%;
 
   text-align: center;
@@ -115,4 +114,7 @@
 
 .rating span {
   margin-left: 5px;
+}
+
+@media screen and (max-width: 1023.98px) {
 }

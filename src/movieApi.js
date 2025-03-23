@@ -68,3 +68,20 @@ export const fetchAllMovies = async (page = 1) => {
     console.log(error.message);
   }
 };
+
+/* FILTERS MOVIES  API  */
+
+export const fetchFilters = async (filter, page) => {
+  const url = `https://api.themoviedb.org/3/movie/\\${filter}?language=en-US&page=${page}`;
+  const params = {
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+    },
+  };
+  try {
+    const respons = await axios.get(url, params);
+    return respons.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};

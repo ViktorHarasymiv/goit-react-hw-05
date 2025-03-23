@@ -105,8 +105,8 @@ export default function MoviesInfo() {
             modules={[Navigation]}
             className="mySwiper"
           >
-            {companies.map((item) => (
-              <SwiperSlide className={css.mySlide}>
+            {companies.map((item, index) => (
+              <SwiperSlide key={index} className={css.mySlide}>
                 <div className={css.company_tile}>
                   {item.logo_path ? (
                     <img

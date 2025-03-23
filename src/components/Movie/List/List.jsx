@@ -17,7 +17,7 @@ import { Navigation } from "swiper/modules";
 // import required modules
 import { EffectCoverflow } from "swiper/modules";
 
-export default function List({ films }) {
+export default function List({ loading, films }) {
   const location = useLocation();
   return (
     <ul className={css.movie_list}>
@@ -26,7 +26,7 @@ export default function List({ films }) {
         effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={3}
+        slidesPerView={1}
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -35,13 +35,31 @@ export default function List({ films }) {
           slideShadows: true,
         }}
         modules={[Navigation, EffectCoverflow]}
+        breakpoints={{
+          640: {
+            slidesPerView: 1, // Для екранів ширше 640px
+          },
+          768: {
+            slidesPerView: 2, // Для екранів ширше 768px
+          },
+          1024: {
+            slidesPerView: 3, // Для екранів ширше 1024px
+          },
+        }}
         className="popular_swiper"
       >
         {films.map((item, index) => (
-          <SwiperSlide key={index} style={{ height: "560px" }}>
+          <SwiperSlide
+            key={index}
+            style={{
+              maxHeight: "560px",
+              minWidth: "360px",
+              marginBlock: "50px",
+            }}
+          >
             <li className={css.movie_item}>
               <Link to={`/movies/${item.id}`} state={{ from: location }}>
-                <Item item={item} />
+                <Item loading={loading} item={item} />
               </Link>
             </li>
           </SwiperSlide>

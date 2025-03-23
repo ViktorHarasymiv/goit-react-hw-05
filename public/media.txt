@@ -1,0 +1,15 @@
+@media screen and (max-width: 424.98px) {
+
+}
+
+@media screen and (max-width: 767.98px) {
+
+}
+
+@media screen and (max-width: 1023.98px) {
+
+}
+
+@media screen and (max-width: 1439.98px) {
+
+}

@@ -1,7 +1,7 @@
 .movies_tile {
   padding: 2em;
 
-  height: 700px;
+  height: clamp(340px, 50%, 700px);
 
   box-sizing: border-box;
 
@@ -19,8 +19,8 @@
 .tile_image {
   margin-right: 50px;
 
-  width: 500px;
-  max-height: 700px;
+  width: clamp(340px, 35vw, 500px);
+  height: clamp(360px, 100%, 550px);
 
   border-radius: 10px;
 
@@ -89,7 +89,6 @@
 
   font-weight: 300;
 
-  font-size: 1.1em;
   letter-spacing: 0.1em;
 
   background-image: linear-gradient(45deg, #ffffff, #969696);
@@ -102,7 +101,7 @@
 }
 
 .mySlide {
-  width: 80px !important;
+  width: clamp(50px, 7vw, 80px) !important;
   height: 100% !important;
 
   display: flex;
@@ -215,4 +214,35 @@
 
 .tile_link_active {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (max-width: 424.98px) {
+  .movies_tile {
+    padding: 0;
+
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .movies_tile {
+    justify-content: center;
+    align-items: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .tile_image {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 1023.98px) {
+}
+@media screen and (max-width: 1439.98px) {
 }

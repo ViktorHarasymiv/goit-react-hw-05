@@ -1,12 +1,23 @@
 import React from "react";
 
-import css from "./Movie.module.css";
 import List from "./List/List";
 
-export default function Movie({ films }) {
+import Skeleton from "@mui/material/Skeleton";
+import css from "./Movie.module.css";
+
+export default function Movie({ loading, films }) {
   return (
     <div>
-      <List films={films}></List>
+      {loading ? (
+        <Skeleton
+          sx={{ bgcolor: " .900" }}
+          variant="rectangular"
+          width={`${100}%`}
+          height={`${100}%`}
+        />
+      ) : (
+        <List films={films}></List>
+      )}
     </div>
   );
 }

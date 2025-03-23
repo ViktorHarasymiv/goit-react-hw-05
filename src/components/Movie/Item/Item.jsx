@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+
+import Skeleton from "@mui/material/Skeleton";
+
 import { format } from "date-fns";
 
 import { CgEditFlipH } from "react-icons/cg";
 import { FaRegStar } from "react-icons/fa";
 import { FaRegStarHalf } from "react-icons/fa";
+
 import css from "./Item.module.css";
 
 export default function Item({ item }) {
@@ -21,7 +25,16 @@ export default function Item({ item }) {
     <div className={css.flip_card}>
       <div className={css.flip_card_inner}>
         <div className={css.flip_card_front}>
-          <img className={css.flip_image} src={IMAGE_SRC} alt="" />
+          {item.poster_path ? (
+            <img className={css.flip_image} src={IMAGE_SRC} alt="" />
+          ) : (
+            <Skeleton
+              sx={{ bgcolor: " .900" }}
+              variant="rectangular"
+              width={`${100}%`}
+              height={`${100}%`}
+            />
+          )}
         </div>
         <div className={css.flip_card_back}>
           <h3 className={css.title}>{item.original_title}</h3>

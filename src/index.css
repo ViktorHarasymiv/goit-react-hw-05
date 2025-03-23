@@ -4,13 +4,17 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(255, 255, 255, 0.87) !important;
   background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  box-sizing: border-box;
 }
 
 a {
@@ -58,19 +62,23 @@ main {
 }
 
 h1 {
-  font-size: 2.8em;
+  font-size: clamp(1.8em, 8vw, 2.8em);
+
   line-height: 1.1;
 }
 
 h3 {
   margin: 0;
   font-size: 2.5em;
+
+  font-size: clamp(1.5em, 8vw, 2.5em);
+
   font-weight: 400;
   letter-spacing: 0.1em;
 }
 
 p {
-  font-size: 0.9em;
+  font-size: clamp(0.8em, 3vw, 0.9em);
 }
 
 p,
@@ -84,9 +92,6 @@ h4 {
 button {
   font-family: inherit;
   padding: 0.1em 1.2em;
-
-  width: 160px;
-  height: 2rem;
 
   cursor: pointer;
 
@@ -103,8 +108,7 @@ button {
 
   background-color: rgba(0, 0, 0, 0.1);
 
-  color: #e7e7e7;
-  border: 1px solid rgb(255, 165, 0);
+  color: #e7e7e7 !important;
   border-radius: 5px;
 
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
@@ -114,14 +118,7 @@ button {
 
 button:hover {
   color: #242424;
-
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 3px rgb(255, 165, 0.8);
-}
-
-button:focus,
-button:focus-visible {
-  background-color: #fff;
+  box-shadow: 0 0 5px #6b096e;
 }
 
 /* INPUT */
@@ -175,4 +172,44 @@ input[type="search" i]:hover {
   background-color: rgb(40, 40, 40) !important;
 
   transition: all 0.2s linear;
+}
+
+.pagination {
+  margin: 40px auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: inherit !important;
+}
+
+.css-5lvf42-MuiSelect-select-MuiInputBase-input-MuiInput-input {
+  color: #c8006d !important;
+}
+
+.css-1gpuzre-MuiSvgIcon-root-MuiSelect-icon {
+  color: #c8006d !important;
+}
+.css-1rwta7t-MuiSvgIcon-root-MuiSelect-icon {
+  fill: #c8006d !important;
+}
+
+.css-j218zi-MuiInputBase-root-MuiInput-root-MuiSelect-root::before {
+  border-color: #c8006d !important;
+}
+
+.css-j218zi-MuiInputBase-root-MuiInput-root-MuiSelect-root::after {
+  border-color: #c8006d !important;
+}
+
+.css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  color: #e7e7e7 !important;
+
+  background-color: rgba(0, 0, 0, 1) !important;
+}
+
+.css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper li:hover {
+  color: #cacaca !important;
+  text-decoration: underline;
 }

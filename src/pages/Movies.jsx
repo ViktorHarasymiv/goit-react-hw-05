@@ -5,15 +5,17 @@ import { useEffect, useState } from "react";
 import css from "./../components/Movie/Movie.module.css";
 import toast, { Toaster } from "react-hot-toast";
 
-import { CiFilter } from "react-icons/ci";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 import Search from "../components/Search/Search";
 import Movie from "../components/Movie/Movie";
 
 import { fetchSearch } from "./../movieApi";
+import { fetchFilters } from "./../movieApi";
 
-import Pagination from "../components/Movie/Pagination/Pagination";
 import Accost from "../components/Movie/Accost/Accost";
+import Filter from "../components/Filter/Filter";
 
 export default function Movies() {
   const [searchResults, setSearchResults] = useState([]);
@@ -46,8 +48,18 @@ export default function Movies() {
               duration: 5000,
             }
           );
-        } else {
-          toast.success(`Wow! We found ${response.total_results} films`);
+        } else if (currentPage > 1) {
+          toast(`${currentPage} / ${totalPages}`, {
+            icon: "🗒️",
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              border: "1px solid #c8006d",
+              color: "#fff",
+              fontWeight: "300",
+              letterSpacing: ".1em",
+            },
+          });
         }
       } catch (error) {
         console.log(error);
@@ -61,8 +73,57 @@ export default function Movies() {
     }
   }, [searchQuery, currentPage]);
 
+  function CurrentPage(num) {
+    setCurrentPage(num);
+  }
+
+  // FILTER
+
+  const [filter, setFilter] = useState("upcoming");
+
+  const [dataAll, setDataAll] = useState([]);
+
+  const [totalFilterPages, setTotalFilterPages] = useState(0);
+  const [currentFilterPage, setCurrentFilterPage] = useState(1);
+
+  useEffect(() => {
+    setDataAll([]);
+    const filterFunction = async (query, page) => {
+      try {
+        const response = await fetchFilters(query, page);
+        setDataAll(response.results);
+        setTotalFilterPages(response.total_pages);
+
+        if (!response.total_results) {
+          toast(
+            "Sorry, we have not found the films for your request. Try to write it differently.",
+            {
+              duration: 5000,
+            }
+          );
+        } else if (currentFilterPage > 1) {
+          toast(`${currentFilterPage} / ${totalFilterPages}`, {
+            icon: "🗒️",
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              border: ".5px solid #c8006d",
+              color: "#fff",
+              fontWeight: "300",
+              letterSpacing: ".1em",
+            },
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+      }
+    };
+    filterFunction(filter, currentFilterPage);
+  }, [filter, currentFilterPage]);
+
   const handleCheckPage = (index) => {
-    setCurrentPage(index);
+    setCurrentFilterPage(index);
   };
 
   return (
@@ -78,10 +139,6 @@ export default function Movies() {
             </div>
             <Search onSubmit={(query) => setSearchParams({ search: query })} />
           </div>
-          <div className={css.filter_tile}>
-            <CiFilter className={css.filter_ico} />
-            Filters
-          </div>
         </div>
         {searchResults.length > 0 ? (
           <>
@@ -92,14 +149,37 @@ export default function Movies() {
                 </span>
               </div>
             )}
-            <Movie films={searchResults} totalPage={totalPages} />
+            <Movie
+              loading={loading}
+              films={searchResults}
+              totalPage={totalPages}
+            />
+            <div className="pagination">
+              <Stack spacing={2}>
+                <Pagination
+                  count={totalPages}
+                  page={currentFilterPage}
+                  onChange={(_, num) => CurrentPage(num)}
+                  variant="outlined"
+                  color="secondary"
+                />
+              </Stack>
+            </div>
           </>
         ) : (
           <>
-            <Accost />
+            <Filter setFilter={setFilter} setPage={setCurrentFilterPage} />
+            <Accost
+              loading={loading}
+              data={dataAll}
+              totalPage={totalFilterPages}
+              nextPage={handleCheckPage}
+              currentFilter={filter}
+              setPage={setCurrentFilterPage}
+              currentPage={currentFilterPage}
+            />
           </>
         )}
-        <Pagination totalPage={totalPages} next={handleCheckPage} />
       </section>
     </main>
   );
