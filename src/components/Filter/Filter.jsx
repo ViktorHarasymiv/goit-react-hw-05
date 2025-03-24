@@ -12,8 +12,6 @@ import { CiFilter } from "react-icons/ci";
 export default function Filter({ setFilter, setPage }) {
   const [film, setFilm] = useState("");
 
-  console.log(film);
-
   const handleChange = (event) => {
     setFilter(event.target.value);
     setFilm(event.target.value);
@@ -38,7 +36,11 @@ export default function Filter({ setFilter, setPage }) {
 
   return (
     <div className={css.filter_form}>
-      <FormControl variant="standard" sx={{ minWidth: 150 }}>
+      <FormControl
+        className={css.filter_tile}
+        variant="standard"
+        sx={{ minWidth: 150 }}
+      >
         <InputLabel id="demo-simple-select-standard-label">
           <span className={css.filter_tile}>
             <CiFilter className={css.filter_ico} />

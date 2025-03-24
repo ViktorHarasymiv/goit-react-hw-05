@@ -1,5 +1,6 @@
 .header {
   padding: 2rem;
+
   display: flex;
   align-items: center;
   gap: 12px;
@@ -20,7 +21,7 @@
 .link {
   position: relative;
 
-  font-size: 1em;
+  font-size: clamp(0.8em, 2vw, 1em);
   letter-spacing: 0.2em;
   font-weight: 500;
 
@@ -48,7 +49,7 @@
   left: 0;
 
   width: 0%;
-  height: 0.01em;
+  height: 0.5px;
 
   transition: width 0.2s ease-in-out;
 }
@@ -60,4 +61,14 @@
 .link.active::after {
   width: 100%;
   background: linear-gradient(90deg, #fa8afa, #ffa500);
+}
+
+@media screen and (max-width: 767.98px) {
+  .header {
+    padding: 1.5rem;
+  }
+  .nav {
+    margin-left: 25px;
+    gap: 30px;
+  }
 }

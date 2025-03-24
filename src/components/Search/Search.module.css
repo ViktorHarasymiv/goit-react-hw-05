@@ -116,7 +116,13 @@
   }
 }
 
-@media screen and (max-width: 499.98px) {
+@media screen and (max-width: 767.98px) {
+  .search {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 424.98px) {
   .search {
     font-size: 0.8em;
   }

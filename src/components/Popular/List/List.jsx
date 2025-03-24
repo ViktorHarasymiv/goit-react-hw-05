@@ -47,20 +47,20 @@ export default function List({ data }) {
           1024: {
             slidesPerView: 3, // Для екранів ширше 1024px
           },
+          1440: {
+            slidesPerView: 4, // Для екранів ширше 1024px
+          },
         }}
       >
         {data.map((item, index) => (
           <SwiperSlide
             key={index}
             style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-
               maxHeight: "560px",
               minWidth: "360px",
-              marginBlock: "50px",
+              marginBlock: "60px",
             }}
+            className={css.slide_item_popular}
           >
             <li className={css.movie_item}>
               <Link to={`/movies/${item.id}`} state={{ from: location }}>

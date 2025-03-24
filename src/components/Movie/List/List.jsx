@@ -37,13 +37,16 @@ export default function List({ loading, films }) {
         modules={[Navigation, EffectCoverflow]}
         breakpoints={{
           640: {
-            slidesPerView: 1, // Для екранів ширше 640px
+            slidesPerView: 1,
           },
           768: {
-            slidesPerView: 2, // Для екранів ширше 768px
+            slidesPerView: 2,
           },
           1024: {
-            slidesPerView: 3, // Для екранів ширше 1024px
+            slidesPerView: 3,
+          },
+          1440: {
+            slidesPerView: 4,
           },
         }}
         className="popular_swiper"
@@ -54,7 +57,7 @@ export default function List({ loading, films }) {
             style={{
               maxHeight: "560px",
               minWidth: "360px",
-              marginBlock: "50px",
+              marginBlock: "60px",
             }}
           >
             <li className={css.movie_item}>

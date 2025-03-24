@@ -127,17 +127,28 @@ export default function Movies() {
   };
 
   return (
-    <main className="container">
+    <main>
       <section>
         <Toaster position="top-right" reverseOrder={false} toastOptions={{}} />
-
-        <div className={css.navigation_tile}>
-          <div className={css.search_tile}>
-            <div className={css.animated_title}>
-              <h1 className={css.affiche_first}>Movies</h1>
-              <h1 className={css.affiche_second}>Movies</h1>
+        <div className="container">
+          <div className={css.navigation_tile}>
+            <div className={css.search_tile}>
+              <div className={css.animated_title}>
+                <h1 className={css.affiche_first}>Movies</h1>
+                <h1 className={css.affiche_second}>Movies</h1>
+              </div>
+              <Search
+                onSubmit={(query) => setSearchParams({ search: query })}
+              />
             </div>
-            <Search onSubmit={(query) => setSearchParams({ search: query })} />
+          </div>
+
+          <div className={css.accost_tile}>
+            Welcome to our service
+            <span className={css.accost_title}>The Movie DB</span>
+            <p className={css.accost_paragraph}>
+              We have for you collection with {filter}
+            </p>
           </div>
         </div>
         {searchResults.length > 0 ? (
@@ -158,11 +169,12 @@ export default function Movies() {
               <Stack spacing={2}>
                 <Pagination
                   count={totalPages}
-                  page={currentFilterPage}
+                  page={currentPage}
                   onChange={(_, num) => CurrentPage(num)}
                   variant="outlined"
                   color="secondary"
                 />
+                1
               </Stack>
             </div>
           </>

@@ -36,7 +36,9 @@
   position: relative;
 
   margin: 0 auto;
+
   max-width: 1340px;
+  padding-inline: 2rem;
 }
 
 .popular_swiper {
@@ -117,4 +119,7 @@
 .swiper-pagination-horizontal.swiper-pagination-bullets
   .swiper-pagination-bullet {
   margin: 0 6px !important;
+}
+
+@media screen and (max-width: 767.98px) {
 }
