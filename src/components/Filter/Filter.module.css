@@ -1,7 +1,7 @@
 .filter_form {
-  position: absolute;
-  right: 0;
+  align-self: flex-end;
 }
+
 .filter_tile {
   text-transform: uppercase;
   font-size: 1.2em;

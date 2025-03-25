@@ -1,13 +1,11 @@
-import React, { lazy } from "react";
+import React from "react";
 
-import css from "./Accost.module.css";
-const All = lazy(() => import("../../All/All"));
+import All from "../../All/All";
 
 export default function Accost({
   data,
   totalPage,
   nextPage,
-  currentFilter,
   setPage,
   currentPage,
   loading,

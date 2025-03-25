@@ -13,24 +13,22 @@ export default function Filter({ setFilter, setPage }) {
   const [film, setFilm] = useState("");
 
   const handleChange = (event) => {
-    setFilter(event.target.value);
-    setFilm(event.target.value);
+    const value = event.target.value;
+
+    setFilm(value);
+    setFilter(value);
     setPage(1);
-    if (film == "upcoming") {
-      setFilm(film);
-      return;
+    if (value == "upcoming") {
+      setFilm(value);
     }
-    if (film == "top_rated") {
-      setFilm(film);
-      return;
+    if (value == "top_rated") {
+      setFilm(value);
     }
-    if (film == "trending") {
-      setFilm(film);
-      return;
+    if (value == "trending") {
+      setFilm(value);
     }
-    if (film == "now_playing") {
-      setFilm(film);
-      return;
+    if (value == "now_playing") {
+      setFilm(value);
     }
   };
 
@@ -41,22 +39,20 @@ export default function Filter({ setFilter, setPage }) {
         variant="standard"
         sx={{ minWidth: 150 }}
       >
-        <InputLabel id="demo-simple-select-standard-label">
+        <InputLabel id="label_filter">
           <span className={css.filter_tile}>
             <CiFilter className={css.filter_ico} />
             Filters
           </span>
         </InputLabel>
         <Select
-          labelId="demo-simple-select-standard-label"
+          labelId="label_filter"
           id="demo-simple-select-standard"
-          value={film}
           onChange={handleChange}
+          value={film}
           label="Filters"
+          className="select_filter"
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
           <MenuItem value={"popular"}>Popular</MenuItem>
           <MenuItem value={"top_rated"}>Top Rated</MenuItem>
           <MenuItem value={"now_playing"}>Now Playing</MenuItem>

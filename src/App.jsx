@@ -1,15 +1,14 @@
-import { useState, useEffect, CSSProperties, Suspense, lazy } from "react";
-import { Routes, Route, NavLink } from "react-router-dom";
+import { useState, useEffect, Suspense, lazy } from "react";
+import { Routes, Route } from "react-router-dom";
 
-import SyncLoader from "react-spinners/SyncLoader";
-import css from "./App.module.css";
+// import SyncLoader from "react-spinners/SyncLoader";
 
 import "./swiper.css";
 
-const AppBar = lazy(() => import("./components/Navigation/Navigation"));
+import AppBar from "./components/Navigation/Navigation";
+import Home from "./pages/Home";
+import Movies from "./pages/Movies";
 
-const Home = lazy(() => import("./pages/Home"));
-const Movies = lazy(() => import("./pages/Movies"));
 const Cast = lazy(() => import("./components/Cast/Cast"));
 const Reviews = lazy(() => import("./components/Reviews/Reviews"));
 
@@ -20,18 +19,18 @@ import Details from "./pages/Details/Details";
 
 import { fetchTrendingMovies } from "./movieApi";
 
-const override = {
-  display: "block",
+// const override = {
+//   display: "block",
 
-  position: "fixed",
-  top: "50%",
-  left: "50%",
-  transfotm: "translate(-50%, -50%)",
-};
+//   position: "fixed",
+//   top: "50%",
+//   left: "50%",
+//   transfotm: "translate(-50%, -50%)",
+// };
 
 function App() {
-  let [loading, setLoading] = useState(true);
-  let [color, setColor] = useState("#ffffff");
+  // let [loading, setLoading] = useState(true);
+  // let [color, setColor] = useState("#ffffff");
 
   const [popular, setPopular] = useState([]);
   const [loader, setLoader] = useState(false);
@@ -55,7 +54,7 @@ function App() {
 
   return (
     <>
-      <Suspense
+      {/* <Suspense
         fallback={
           <SyncLoader
             color={color}
@@ -66,21 +65,24 @@ function App() {
             data-testid="loader"
           />
         }
-      >
-        <AppBar></AppBar>
-        <Routes>
-          <Route
-            path="/"
-            element={<Home popular_data={popular} loader={loader} />}
-          />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:id" element={<Details />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
+      > 
+          </Suspense>
+      */}
+
+      <AppBar />
+
+      <Routes>
+        <Route
+          path="/"
+          element={<Home popular_data={popular} loader={loader} />}
+        />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:id" element={<Details />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 }

@@ -1,5 +1,7 @@
 .cast_tab {
   position: relative;
+
+  width: clamp(260px, 80vw, 700px) !important;
 }
 .cast_tile {
   margin-top: 15px;

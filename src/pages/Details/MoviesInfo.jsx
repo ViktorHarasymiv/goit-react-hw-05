@@ -103,7 +103,20 @@ export default function MoviesInfo() {
             spaceBetween={50}
             navigation={true}
             modules={[Navigation]}
-            className="mySwiper"
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+              1440: {
+                slidesPerView: 4,
+              },
+            }}
           >
             {companies.map((item, index) => (
               <SwiperSlide key={index} className={css.mySlide}>

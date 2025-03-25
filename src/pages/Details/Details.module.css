@@ -1,7 +1,7 @@
 .movies_tile {
   padding: 2em;
 
-  height: clamp(340px, 50%, 700px);
+  height: clamp(340px, 80vh, 900px);
 
   box-sizing: border-box;
 
@@ -20,7 +20,6 @@
   margin-right: 50px;
 
   width: clamp(340px, 35vw, 500px);
-  height: clamp(360px, 100%, 550px);
 
   border-radius: 10px;
 
@@ -28,11 +27,6 @@
 }
 
 .about_tile {
-  max-width: 780px;
-  width: 100%;
-  overflow-y: auto;
-  scrollbar-width: none;
-
   display: flex;
   flex-direction: column;
 

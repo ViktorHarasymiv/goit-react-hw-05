@@ -61,6 +61,10 @@ main {
   flex-grow: 1;
 }
 
+section {
+  padding-inline: 2rem;
+}
+
 h1 {
   font-size: clamp(1.8em, 8vw, 2.8em);
 
@@ -212,4 +216,9 @@ input[type="search" i]:hover {
 .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper li:hover {
   color: #cacaca !important;
   text-decoration: underline;
+}
+
+.select_filter {
+  text-transform: capitalize;
+  -webkit-text-fill-color: #cacaca !important;
 }

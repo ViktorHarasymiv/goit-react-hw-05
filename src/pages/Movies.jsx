@@ -152,7 +152,7 @@ export default function Movies() {
           </div>
         </div>
         {searchResults.length > 0 ? (
-          <>
+          <div>
             {totalResult > 0 && (
               <div className={css.section_title}>
                 <span style={{ display: "block", paddingTop: "5px" }}>
@@ -174,12 +174,11 @@ export default function Movies() {
                   variant="outlined"
                   color="secondary"
                 />
-                1
               </Stack>
             </div>
-          </>
+          </div>
         ) : (
-          <>
+          <div className={css.movie_wrapper}>
             <Filter setFilter={setFilter} setPage={setCurrentFilterPage} />
             <Accost
               loading={loading}
@@ -190,7 +189,7 @@ export default function Movies() {
               setPage={setCurrentFilterPage}
               currentPage={currentFilterPage}
             />
-          </>
+          </div>
         )}
       </section>
     </main>

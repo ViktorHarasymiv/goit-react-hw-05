@@ -1,5 +1,6 @@
 .reviews_tab {
   position: relative;
+  width: clamp(260px, 80vw, 700px) !important;
 }
 
 .review_item {

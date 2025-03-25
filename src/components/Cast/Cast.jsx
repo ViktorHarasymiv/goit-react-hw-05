@@ -52,10 +52,10 @@ export default function Cast() {
     <div className={css.cast_tab}>
       {credits && (
         <ul>
-          <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+          <Swiper navigation={true} modules={[Navigation]}>
             {credits.map((cast) => (
-              <SwiperSlide style={{ width: "100%" }}>
-                <li key={cast.id}>
+              <SwiperSlide key={cast.id}>
+                <li>
                   <CastItem dataCast={cast} />
                 </li>
               </SwiperSlide>

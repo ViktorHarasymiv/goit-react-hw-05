@@ -54,10 +54,10 @@ export default function Reviews() {
       )}
       {reviews && (
         <ul className={css.reviews_list}>
-          <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+          <Swiper navigation={true} modules={[Navigation]}>
             {reviews.map((review) => (
-              <SwiperSlide style={{ width: "100%" }}>
-                <li key={review.id} className={css.review_item}>
+              <SwiperSlide key={review.id}>
+                <li className={css.review_item}>
                   <ReviewsItem dataReviews={review} />
                 </li>
               </SwiperSlide>

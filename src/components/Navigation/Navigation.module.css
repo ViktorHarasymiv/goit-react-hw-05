@@ -25,19 +25,11 @@
   letter-spacing: 0.2em;
   font-weight: 500;
 
-  text-decoration: none;
-
-  background-image: linear-gradient(45deg, #fa8afa, #ffa500);
-  background-size: 100%;
-  background-repeat: repeat;
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
+  color: #f4f4f4;
 }
 
 .link:hover {
-  background-image: linear-gradient(-45deg, #fa8afa, #ffa500);
+  color: #a30c5d;
 }
 
 .link::after {
@@ -45,22 +37,22 @@
 
   content: "";
 
-  bottom: -2px;
+  bottom: -4px;
   left: 0;
 
   width: 0%;
-  height: 0.5px;
+  height: 1px;
 
   transition: width 0.2s ease-in-out;
 }
 
 .active {
-  background-image: linear-gradient(-45deg, #fa8afa, #ffa500);
+  color: #a30c5d;
 }
 
 .link.active::after {
   width: 100%;
-  background: linear-gradient(90deg, #fa8afa, #ffa500);
+  background-color: #a30c5d;
 }
 
 @media screen and (max-width: 767.98px) {
