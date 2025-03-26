@@ -57,7 +57,6 @@ export default function List({ data }) {
             key={index}
             style={{
               maxHeight: "560px",
-              marginBlock: "60px",
             }}
             className={css.slide_item_popular}
           >

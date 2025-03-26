@@ -1,8 +1,9 @@
-.movie_list {
+.movie_item {
+  height: clamp(300px, 55vh, 540px);
 }
 
-.movie_item {
-  height: clamp(300px, 60vh, 560px);
+.slide_item_popular {
+  margin-block: 60px;
 }
 
 @media screen and (max-width: 767.98px) {
@@ -10,5 +11,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .slide_item_popular {
+    margin-block: 40px;
+  }
+}
+
+@media screen and (max-width: 424.98px) {
+  .slide_item_popular {
+    margin-top: 20px;
+    margin-bottom: 60px;
   }
 }
