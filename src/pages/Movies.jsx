@@ -171,8 +171,9 @@ export default function Movies() {
                   count={totalPages}
                   page={currentPage}
                   onChange={(_, num) => CurrentPage(num)}
+                  size={"small"}
                   variant="outlined"
-                  color="secondary"
+                  color="primary"
                 />
               </Stack>
             </div>

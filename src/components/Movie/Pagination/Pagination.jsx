@@ -23,8 +23,9 @@ export default function PaginationPage({
           count={totalPage}
           page={currentPage}
           onChange={(_, num) => CurrentPage(num)}
+          size={"small"}
           variant="outlined"
-          color="secondary"
+          color="primary"
         />
       </Stack>
     </div>

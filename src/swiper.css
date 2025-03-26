@@ -38,23 +38,17 @@
   margin: 0 auto;
 
   max-width: 1340px;
-  padding-inline: 2rem;
 }
 
 .popular_swiper {
-  height: clamp(360px, 100%, 500px);
+  height: clamp(330px, 100%, 500px);
 }
 
 .popular_swiper .swiper-slide {
-  min-width: auto !important;
-
   height: clamp(360px, 100%, 500px);
 }
 
 @media screen and (max-width: 767.98px) {
-  .popular_swiper .swiper-slide {
-    min-width: 370px !important;
-  }
 }
 
 .popular_swiper .swiper-button-prev,

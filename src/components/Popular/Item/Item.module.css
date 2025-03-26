@@ -2,11 +2,10 @@
   position: relative;
 
   max-width: 510px;
-  min-width: 350px;
+  min-width: 300px;
 
   width: 100% !important;
-
-  height: clamp(400px, 70vh, 530px) !important;
+  height: clamp(300px, 60vh, 560px);
 
   background-color: transparent;
 

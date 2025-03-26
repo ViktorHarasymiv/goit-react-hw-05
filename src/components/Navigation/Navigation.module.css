@@ -21,7 +21,7 @@
 .link {
   position: relative;
 
-  font-size: clamp(0.8em, 2vw, 1em);
+  font-size: clamp(0.85em, 2vw, 1em);
   letter-spacing: 0.2em;
   font-weight: 500;
 
@@ -57,7 +57,7 @@
 
 @media screen and (max-width: 767.98px) {
   .header {
-    padding: 1.5rem;
+    padding: 1rem;
   }
   .nav {
     margin-left: 25px;

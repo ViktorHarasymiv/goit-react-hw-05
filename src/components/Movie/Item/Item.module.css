@@ -2,11 +2,10 @@
   position: relative;
 
   max-width: 510px;
-  min-width: 350px;
+  min-width: 300px;
 
   width: 100% !important;
-
-  height: clamp(400px, 70vh, 530px) !important;
+  height: clamp(300px, 60vh, 560px);
 
   background-color: transparent;
 
@@ -58,13 +57,12 @@
 
 /* Style the back side */
 .flip_card_back {
-  overflow: hidden;
-
   width: 100%;
   height: 100%;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 
   background-color: rgba(255, 255, 255, 0.1);
   -webkit-box-shadow: inset 0px 0px 100px 25px rgba(66, 68, 90, 1);
@@ -102,25 +100,29 @@
 }
 
 .title {
-  font-size: 1.5em;
+  margin-top: 25px;
+  font-size: clamp(1.6em, 5vw, 1.9em);
 }
 
 .about {
-  margin: 0 auto;
-  max-width: calc(100% - 15%);
+  padding-inline: 15px;
 
-  padding-inline: 8px;
-
-  font-size: 1em;
+  font-size: clamp(0.8em, 2vw, 1em);
   font-weight: 300;
   letter-spacing: 0.1em;
 }
 
 .info {
+  margin-bottom: 25px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   gap: 20px;
+
+  font-size: clamp(0.8em, 2vw, 1em);
+  line-height: 1;
 }
 
 .rating span {

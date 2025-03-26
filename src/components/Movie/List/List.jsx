@@ -56,7 +56,6 @@ export default function List({ loading, films }) {
             key={index}
             style={{
               maxHeight: "560px",
-              minWidth: "360px",
               marginBlock: "60px",
             }}
           >
