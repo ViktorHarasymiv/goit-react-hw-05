@@ -56,8 +56,8 @@ export default function List({ loading, films }) {
             key={index}
             style={{
               maxHeight: "560px",
-              marginBlock: "60px",
             }}
+            className={css.slide_item_popular}
           >
             <li className={css.movie_item}>
               <Link to={`/movies/${item.id}`} state={{ from: location }}>

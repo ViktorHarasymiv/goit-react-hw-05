@@ -42,3 +42,11 @@
     justify-content: center;
   }
 }
+
+@media screen and (max-width: 424.98px) {
+  .movie_item {
+    width: 100vw;
+
+    height: clamp(360px, 45vh, 380px);
+  }
+}
