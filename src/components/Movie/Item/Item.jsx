@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import { CgEditFlipH } from "react-icons/cg";
 import { FaRegStar } from "react-icons/fa";
 import { FaRegStarHalf } from "react-icons/fa";
+import { MdOutlineAccessTime } from "react-icons/md";
 
 import css from "./Item.module.css";
 
@@ -31,8 +32,8 @@ export default function Item({ item }) {
             <Skeleton
               sx={{ bgcolor: " .900" }}
               variant="rectangular"
-              width={`${100}%`}
-              height={`${100}%`}
+              width="100%"
+              height="100%"
             />
           )}
         </div>
@@ -40,12 +41,34 @@ export default function Item({ item }) {
           <h3 className={css.title}>{item.original_title}</h3>
           <p className={css.about}>{item.overview}</p>
           <div className={css.info}>
-            <span className={css.release}>{formatDate(item.release_date)}</span>
+            <span className={css.release}>
+              {" "}
+              <MdOutlineAccessTime
+                style={{
+                  fill: "orange",
+                  fontSize: "16px",
+                  marginRight: "5px",
+                }}
+              />
+              {formatDate(item.release_date)}
+            </span>
             <span className={css.rating}>
               {rating > 5 ? (
-                <FaRegStar style={{ fill: "orange" }} />
+                <FaRegStar
+                  style={{
+                    fill: "orange",
+                    fontSize: "16px",
+                    marginRight: "5px",
+                  }}
+                />
               ) : (
-                <FaRegStarHalf style={{ fill: "orange" }} />
+                <FaRegStarHalf
+                  style={{
+                    fill: "orange",
+                    fontSize: "16px",
+                    marginRight: "5px",
+                  }}
+                />
               )}
               <span>{rating}</span>
             </span>

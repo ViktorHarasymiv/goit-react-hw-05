@@ -107,11 +107,9 @@
 }
 
 .about {
-  padding-inline: 15px;
+  padding-inline: 25px;
 
-  font-size: clamp(0.8em, 2vw, 1em);
-  font-weight: 300;
-  letter-spacing: 0.1em;
+  font-size: 0.8em;
 }
 
 .info {
@@ -125,8 +123,4 @@
 
   font-size: clamp(0.8em, 2vw, 1em);
   line-height: 1;
-}
-
-.rating span {
-  margin-left: 5px;
 }

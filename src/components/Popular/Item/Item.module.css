@@ -5,7 +5,7 @@
   min-width: 300px;
 
   width: 100% !important;
-  height: clamp(300px, 55vh, 540px);
+  height: clamp(300px, 75vh, 540px);
 
   background-color: transparent;
 
@@ -101,10 +101,18 @@
   color: #ffa500;
 }
 
+.title {
+  font-size: 1.3em;
+}
+
 .about {
-  padding-inline: 8px;
-  font-weight: 300;
-  letter-spacing: 0.1em;
+  padding-inline: 15px;
+
+  display: block;
+
+  overflow: hidden;
+
+  font-size: 1em;
 }
 
 .info {
@@ -116,4 +124,10 @@
 
 .rating span {
   margin-left: 5px;
+}
+
+@media screen and (max-width: 767.98px) {
+  .flip_card {
+    height: clamp(300px, 60vh, 540px);
+  }
 }

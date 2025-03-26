@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import { CgEditFlipH } from "react-icons/cg";
 import { FaRegStar } from "react-icons/fa";
 import { FaRegStarHalf } from "react-icons/fa";
+import { MdOutlineAccessTime } from "react-icons/md";
 
 import css from "./Item.module.css";
 
@@ -21,7 +22,7 @@ export default function Item({ loading, item }) {
     return format(new Date(date), "MMMM dd yyyy");
   };
 
-  const rating = Number(item.vote_average).toFixed(2);
+  const rating = Number(item.vote_average).toFixed(1);
   return (
     <>
       {!loading ? (
@@ -31,7 +32,14 @@ export default function Item({ loading, item }) {
               {item.poster_path ? (
                 <img className={css.flip_image} src={IMAGE_SRC} alt="" />
               ) : (
-                <Skeleton variant="rectangular" width={210} height={118} />
+                <Skeleton
+                  sx={{
+                    bgcolor: "#121212",
+                  }}
+                  variant="wave"
+                  width="100%"
+                  height="100%"
+                />
               )}
             </div>
             <div className={css.flip_card_back}>
@@ -41,16 +49,33 @@ export default function Item({ loading, item }) {
               <p className={css.about}>{item.overview}</p>
               <div className={css.info}>
                 <span className={css.release}>
+                  <MdOutlineAccessTime
+                    style={{
+                      fill: "orange",
+                      fontSize: "12px",
+                      marginRight: "5px",
+                    }}
+                  />
                   {formatDate(
                     item.release_date ? item.release_date : item.first_air_date
                   )}
                 </span>
                 <span className={css.rating}>
                   {rating > 5 ? (
-                    <FaRegStar style={{ fill: "orange", fontSize: "14px" }} />
+                    <FaRegStar
+                      style={{
+                        fill: "orange",
+                        fontSize: "12px",
+                        marginRight: "5px",
+                      }}
+                    />
                   ) : (
                     <FaRegStarHalf
-                      style={{ fill: "orange", fontSize: "14px" }}
+                      style={{
+                        fill: "orange",
+                        fontSize: "12px",
+                        marginRight: "5px",
+                      }}
                     />
                   )}
                   <span>{rating}</span>

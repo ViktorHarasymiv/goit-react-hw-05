@@ -1,5 +1,5 @@
 .movie_item {
-  height: clamp(300px, 55vh, 540px);
+  height: clamp(300px, 75vh, 540px);
 }
 
 .slide_item_popular {
@@ -11,6 +11,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    height: clamp(300px, 60vh, 540px);
   }
   .slide_item_popular {
     margin-block: 40px;

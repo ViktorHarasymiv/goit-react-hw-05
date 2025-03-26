@@ -79,7 +79,7 @@ export default function Movies() {
 
   // FILTER
 
-  const [filter, setFilter] = useState("upcoming");
+  const [filter, setFilter] = useState("now_playing");
 
   const [dataAll, setDataAll] = useState([]);
 
@@ -146,20 +146,23 @@ export default function Movies() {
           <div className={css.accost_tile}>
             Welcome to our service
             <span className={css.accost_title}>The Movie DB</span>
-            <p className={css.accost_paragraph}>
-              We have for you collection with {filter}
-            </p>
+            {searchResults.length <= 0 && (
+              <p className={css.accost_paragraph}>
+                We have for you collection with {filter}
+              </p>
+            )}
           </div>
+          {searchResults.length > 0 && (
+            <div className={css.section_title}>
+              <span style={{ display: "block", paddingTop: "5px" }}>
+                We have {totalResult} position for{" "}
+                <em style={{ textDecoration: "underline" }}>{searchQuery}</em>
+              </span>
+            </div>
+          )}
         </div>
         {searchResults.length > 0 ? (
           <div>
-            {totalResult > 0 && (
-              <div className={css.section_title}>
-                <span style={{ display: "block", paddingTop: "5px" }}>
-                  Total: {totalResult}
-                </span>
-              </div>
-            )}
             <Movie
               loading={loading}
               films={searchResults}

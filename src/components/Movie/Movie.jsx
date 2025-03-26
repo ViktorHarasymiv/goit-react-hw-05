@@ -12,8 +12,8 @@ export default function Movie({ loading, films }) {
         <Skeleton
           sx={{ bgcolor: " .900" }}
           variant="rectangular"
-          width={`${100}%`}
-          height={`${100}%`}
+          width="100%"
+          height="100%"
         />
       ) : (
         <List films={films}></List>
