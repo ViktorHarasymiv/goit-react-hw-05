@@ -1,29 +1,31 @@
 .movie_list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
-  column-gap: 20px;
-
+  column-gap: 10px;
   row-gap: 25px;
 }
 
 .movie_item {
-  width: clamp(240px, 15vw, 300px);
-  height: clamp(300px, 45vh, 380px);
+  width: clamp(240px, 15vw, 340px);
+  height: clamp(300px, 38vh, 425px);
 }
 
-@media screen and (max-width: 1023.98px) {
+@media screen and (max-width: 1054.98px) {
   .movie_item {
-    width: clamp(200px, 15vw, 300px);
-    height: clamp(300px, 10vh, 460px);
+    width: clamp(200px, 27vw, 320px);
+    height: clamp(300px, 37vh, 460px);
   }
 }
 
 @media screen and (max-width: 767.98px) {
+  .movie_list {
+    justify-content: space-around;
+  }
   .movie_item {
-    width: clamp(200px, 15vw, 300px);
-    height: clamp(300px, 10vh, 460px);
+    width: 200px;
+    height: 280px;
   }
 }
 
@@ -31,7 +33,6 @@
   .movie_list {
     justify-content: center;
   }
-
   .movie_item {
     width: 100vw;
 

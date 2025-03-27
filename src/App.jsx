@@ -29,22 +29,19 @@ import { fetchTrendingMovies } from "./movieApi";
 // };
 
 function App() {
-  // let [loading, setLoading] = useState(true);
-  // let [color, setColor] = useState("#ffffff");
-
+  let [loading, setLoading] = useState(false);
   const [popular, setPopular] = useState([]);
-  const [loader, setLoader] = useState(false);
 
   const handelSearch = async () => {
     try {
-      setLoader(true);
+      setLoading(true);
       setPopular([]);
       const POPULAR_DATA = await fetchTrendingMovies();
       setPopular(POPULAR_DATA);
     } catch (error) {
       console.log(error);
     } finally {
-      setLoader(false);
+      setLoading(false);
     }
   };
 
@@ -74,7 +71,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home popular_data={popular} loader={loader} />}
+          element={<Home popular_data={popular} loading={loading} />}
         />
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:id" element={<Details />}>

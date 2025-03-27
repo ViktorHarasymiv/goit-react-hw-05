@@ -11,6 +11,8 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+import Skeleton from "@mui/material/Skeleton";
+
 // import required modules
 import { Navigation } from "swiper/modules";
 
@@ -59,11 +61,20 @@ export default function List({ loading, films }) {
             }}
             className={css.slide_item_popular}
           >
-            <li className={css.movie_item}>
-              <Link to={`/movies/${item.id}`} state={{ from: location }}>
-                <Item loading={loading} item={item} />
-              </Link>
-            </li>
+            {loading ? (
+              <Skeleton
+                sx={{ bgcolor: " .900" }}
+                variant="wave"
+                width={`${100}%`}
+                height={`clamp(300px, 58vh, 560px)`}
+              />
+            ) : (
+              <li className={css.movie_item}>
+                <Link to={`/movies/${item.id}`} state={{ from: location }}>
+                  <Item loading={loading} item={item} />
+                </Link>
+              </li>
+            )}
           </SwiperSlide>
         ))}
       </Swiper>

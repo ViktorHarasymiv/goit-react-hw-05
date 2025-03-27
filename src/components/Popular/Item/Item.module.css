@@ -102,28 +102,25 @@
 }
 
 .title {
+  margin-top: 5px;
   font-size: 1.3em;
 }
 
 .about {
-  padding-inline: 15px;
+  padding-inline: 25px;
 
-  display: block;
-
-  overflow: hidden;
-
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 .info {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-}
 
-.rating span {
-  margin-left: 5px;
+  gap: 20px;
+
+  font-size: clamp(0.8em, 2vw, 1em);
+  line-height: 1;
 }
 
 @media screen and (max-width: 767.98px) {

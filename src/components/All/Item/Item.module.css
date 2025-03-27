@@ -112,7 +112,7 @@
 
   padding-inline: 15px;
 
-  font-size: clamp(0.7em, 1%, 1em);
+  font-size: 0.7em;
 }
 
 .info {

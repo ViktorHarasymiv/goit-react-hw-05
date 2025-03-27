@@ -81,6 +81,8 @@ export default function Movies() {
 
   const [filter, setFilter] = useState("now_playing");
 
+  const [filterLoading, setFilterLoading] = useState(false);
+
   const [dataAll, setDataAll] = useState([]);
 
   const [totalFilterPages, setTotalFilterPages] = useState(0);
@@ -89,6 +91,7 @@ export default function Movies() {
   useEffect(() => {
     setDataAll([]);
     const filterFunction = async (query, page) => {
+      setFilterLoading(true);
       try {
         const response = await fetchFilters(query, page);
         setDataAll(response.results);
@@ -105,18 +108,20 @@ export default function Movies() {
           toast(`${currentFilterPage} / ${totalFilterPages}`, {
             icon: "🗒️",
             style: {
-              borderRadius: "10px",
+              borderRadius: "5px",
               background: "#333",
               border: ".5px solid #c8006d",
               color: "#fff",
-              fontWeight: "300",
-              letterSpacing: ".1em",
+              fontSize: ".7em",
+              fontWeight: "400",
+              padding: "2px 5px",
             },
           });
         }
       } catch (error) {
         console.log(error);
       } finally {
+        setFilterLoading(false);
       }
     };
     filterFunction(filter, currentFilterPage);
@@ -129,7 +134,7 @@ export default function Movies() {
   return (
     <main>
       <section>
-        <Toaster position="top-right" reverseOrder={false} toastOptions={{}} />
+        <Toaster position="top-right" reverseOrder={false} />
         <div className="container">
           <div className={css.navigation_tile}>
             <div className={css.search_tile}>
@@ -168,24 +173,27 @@ export default function Movies() {
               films={searchResults}
               totalPage={totalPages}
             />
-            <div className="pagination">
-              <Stack spacing={2}>
-                <Pagination
-                  count={totalPages}
-                  page={currentPage}
-                  onChange={(_, num) => CurrentPage(num)}
-                  size={"small"}
-                  variant="outlined"
-                  color="primary"
-                />
-              </Stack>
-            </div>
+
+            {loading && (
+              <div className="pagination">
+                <Stack spacing={2}>
+                  <Pagination
+                    count={totalPages}
+                    page={currentPage}
+                    onChange={(_, num) => CurrentPage(num)}
+                    size={"small"}
+                    variant="outlined"
+                    color="primary"
+                  />
+                </Stack>
+              </div>
+            )}
           </div>
         ) : (
           <div className={css.movie_wrapper}>
             <Filter setFilter={setFilter} setPage={setCurrentFilterPage} />
             <Accost
-              loading={loading}
+              loading={filterLoading}
               data={dataAll}
               totalPage={totalFilterPages}
               nextPage={handleCheckPage}

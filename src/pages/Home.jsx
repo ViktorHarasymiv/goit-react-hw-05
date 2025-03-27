@@ -1,10 +1,10 @@
 import React from "react";
 import Popular from "../components/Popular/Popular";
 
-export default function Home({ popular_data, loader }) {
+export default function Home({ popular_data, loading }) {
   return (
     <main>
-      <Popular data={popular_data} loader={loader}></Popular>
+      <Popular data={popular_data} loading={loading}></Popular>
     </main>
   );
 }
