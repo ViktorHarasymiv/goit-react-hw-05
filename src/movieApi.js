@@ -72,7 +72,7 @@ export const fetchAllMovies = async (page = 1) => {
 /* FILTERS MOVIES  API  */
 
 export const fetchFilters = async (filter, page) => {
-  const url = `https://api.themoviedb.org/3/movie/\\${filter}?language=en-US&page=${page}`;
+  const url = `https://api.themoviedb.org/3/movie/${filter}?language=en-US&page=${page}`;
   const params = {
     headers: {
       Authorization: `Bearer ${TOKEN}`,

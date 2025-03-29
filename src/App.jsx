@@ -1,6 +1,8 @@
 import { useState, useEffect, Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
+import { useLocation } from "react-router-dom";
+
 // import SyncLoader from "react-spinners/SyncLoader";
 
 import "./swiper.css";
@@ -29,6 +31,8 @@ import { fetchTrendingMovies } from "./movieApi";
 // };
 
 function App() {
+  const location = useLocation();
+
   let [loading, setLoading] = useState(false);
   const [popular, setPopular] = useState([]);
 
@@ -47,7 +51,7 @@ function App() {
 
   useEffect(() => {
     handelSearch();
-  }, []);
+  }, [location.pathname]);
 
   return (
     <>

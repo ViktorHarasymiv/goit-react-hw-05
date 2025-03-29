@@ -27,17 +27,10 @@
   left: 5px !important;
 }
 
-.swiper-button-prev:after,
-.swiper-button-next:after {
-  font-size: 1em !important;
-}
-
 .container {
   position: relative;
 
-  margin: 0 auto;
-
-  max-width: 1340px;
+  margin-top: 1em;
 }
 
 .popular_swiper {
@@ -83,7 +76,7 @@
 
 .popular_swiper .swiper-button-prev:after,
 .popular_swiper .swiper-button-next:after {
-  font-size: 1em !important;
+  font-size: 0.65em !important;
 }
 
 .swiper-pagination-bullet {
@@ -118,10 +111,10 @@
 @media screen and (max-width: 767.98px) {
   .popular_swiper .swiper-button-prev,
   .popular_swiper .swiper-button-next {
-    padding: 10px;
+    padding: 1em;
 
-    top: 42% !important;
-    transform: translateY(42%);
+    top: 50%;
+    transform: translateY(-50%);
 
     border-radius: 25px;
   }

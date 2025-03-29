@@ -1,5 +1,8 @@
 .slide_item_popular {
-  margin: 25px 0px 5px;
+  margin: 25px 0px 15px;
+}
+
+.movie_item {
 }
 
 @media screen and (max-width: 767.98px) {

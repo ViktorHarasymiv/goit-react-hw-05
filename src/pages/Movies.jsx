@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -25,18 +25,31 @@ export default function Movies() {
 
   const [totalResult, setTotalResult] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
+
+  const [value, setValue] = useState("");
   const searchQuery = searchParams.get("search");
 
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setSearchResults([]);
-
     const searchData = async (query, page) => {
+      console.log(value);
+      console.log(query);
+
       try {
         setLoading(true);
 
         const response = await fetchSearch(query, page);
+
+        if (value !== query) {
+          setCurrentPage(1);
+          setTotalResult(response.total_results);
+          setTotalPages(response.total_pages);
+        }
+
+        setValue(query);
+
         setSearchResults(response.results);
         setTotalResult(response.total_results);
         setTotalPages(response.total_pages);
@@ -48,19 +61,19 @@ export default function Movies() {
               duration: 5000,
             }
           );
-        } else if (currentPage > 1) {
+        } else if (currentPage > 1)
           toast(`${currentPage} / ${totalPages}`, {
             icon: "🗒️",
             style: {
-              borderRadius: "10px",
+              borderRadius: "5px",
               background: "#333",
-              border: "1px solid #c8006d",
+              border: ".5px solid #c8006d",
               color: "#fff",
-              fontWeight: "300",
-              letterSpacing: ".1em",
+              fontSize: ".9em",
+              fontWeight: "400",
+              padding: "2px 5px",
             },
           });
-        }
       } catch (error) {
         console.log(error);
       } finally {
@@ -79,7 +92,7 @@ export default function Movies() {
 
   // FILTER
 
-  const [filter, setFilter] = useState("now_playing");
+  const [filter, setFilter] = useState("popular");
 
   const [filterLoading, setFilterLoading] = useState(false);
 
@@ -91,9 +104,9 @@ export default function Movies() {
   useEffect(() => {
     setDataAll([]);
     const filterFunction = async (query, page) => {
-      setFilterLoading(true);
       try {
         const response = await fetchFilters(query, page);
+        setFilterLoading(true);
         setDataAll(response.results);
         setTotalFilterPages(response.total_pages);
 
@@ -112,7 +125,7 @@ export default function Movies() {
               background: "#333",
               border: ".5px solid #c8006d",
               color: "#fff",
-              fontSize: ".7em",
+              fontSize: ".9em",
               fontWeight: "400",
               padding: "2px 5px",
             },
@@ -124,6 +137,7 @@ export default function Movies() {
         setFilterLoading(false);
       }
     };
+
     filterFunction(filter, currentFilterPage);
   }, [filter, currentFilterPage]);
 
@@ -157,6 +171,7 @@ export default function Movies() {
               </p>
             )}
           </div>
+
           {searchResults.length > 0 && (
             <div className={css.section_title}>
               <span style={{ display: "block", paddingTop: "5px" }}>
@@ -166,15 +181,16 @@ export default function Movies() {
             </div>
           )}
         </div>
+
         {searchResults.length > 0 ? (
-          <div>
+          <>
             <Movie
               loading={loading}
               films={searchResults}
               totalPage={totalPages}
             />
 
-            {loading && (
+            {!filterLoading && (
               <div className="pagination">
                 <Stack spacing={2}>
                   <Pagination
@@ -188,7 +204,7 @@ export default function Movies() {
                 </Stack>
               </div>
             )}
-          </div>
+          </>
         ) : (
           <div className={css.movie_wrapper}>
             <Filter setFilter={setFilter} setPage={setCurrentFilterPage} />

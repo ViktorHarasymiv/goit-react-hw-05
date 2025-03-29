@@ -1,41 +1,52 @@
 .movies_tile {
-  padding: 2em;
+  padding: 2em 1em;
+  position: relative;
 
-  height: clamp(340px, 80vh, 900px);
+  height: calc(100vh - var(--header-height));
 
-  box-sizing: border-box;
+  background-color: #000;
+}
 
-  margin-block: 30px;
+.movies_tile::after {
+  overflow: hidden;
+  z-index: -1;
 
-  display: flex;
+  position: absolute;
 
-  border-radius: 10px;
+  content: "";
 
-  background-color: rgba(168, 168, 168, 0.07);
-  box-shadow: rgba(255, 255, 255, 0.1) 0px 4px 6px -1px,
-    rgba(255, 255, 255, 0.1) 0px 2px 24px -1px;
+  left: 0;
 }
 
 .tile_image {
-  margin-right: 50px;
+  position: absolute;
 
-  width: clamp(340px, 35vw, 500px);
+  width: 55vw;
 
-  border-radius: 10px;
+  top: 0;
+  right: 0;
 
-  background-size: cover;
+  object-fit: cover;
+  object-position: 0% 0%;
+
+  filter: opacity(65%);
 }
 
 .about_tile {
+  z-index: 1;
+  position: relative;
+
+  padding-inline: 2em;
+
+  width: 45vw;
+  height: 100%;
+
   display: flex;
   flex-direction: column;
 
-  padding: 1.5rem 2rem;
+  background-color: rgba(0, 0, 0);
 
-  background-color: rgba(255, 255, 255, 0.015);
-  border-radius: 50px;
-
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 20px 20px 200px 220px rgba(0, 0, 0);
 }
 
 .title_link_tile {
@@ -49,6 +60,12 @@
 }
 
 .title_tile {
+  overflow-wrap: break-word;
+  margin-top: 0.5em;
+  font-size: 4em;
+  line-height: 1.3;
+  letter-spacing: 0;
+
   background-image: linear-gradient(45deg, #ffffff, #ffa500);
   background-size: 100%;
   background-repeat: repeat;
@@ -66,7 +83,12 @@
 }
 
 .subtitle_tile {
-  margin-bottom: 15px;
+  margin: 15px 0px 20px;
+
+  font-size: 1.3em;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.2em;
 
   background-image: linear-gradient(45deg, #ffffff, #ffa500);
   background-size: 100%;
@@ -78,40 +100,41 @@
 }
 
 .overview {
-  padding-block: 1rem;
+  margin-top: 20px;
+  min-height: 70px;
+
+  overflow: auto;
+
   flex-grow: 1;
 
-  font-weight: 300;
+  font-weight: 400;
+  letter-spacing: 0.15em;
 
-  letter-spacing: 0.1em;
+  overflow-wrap: break-word;
+}
 
-  background-image: linear-gradient(45deg, #ffffff, #969696);
-  background-size: 100%;
-  background-repeat: repeat;
+.company_box {
+  overflow: hidden;
 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
+  margin-bottom: 30px;
+}
+
+.company {
+  display: flex;
+  gap: 2.5em;
 }
 
 .mySlide {
-  width: clamp(50px, 7vw, 80px) !important;
-  height: 100% !important;
-
   display: flex;
-
   align-items: center;
-}
 
-.company_ico {
-  width: 100%;
+  width: clamp(50px, 17vw, 70px);
+  aspect-ratio: 1;
+
+  filter: drop-shadow(0 0 1px rgb(255, 255, 255));
 }
 
 .company_tile {
-  margin-bottom: 1em;
-  display: flex;
-  align-items: center;
-
   text-align: center;
 }
 
@@ -129,7 +152,7 @@
 }
 
 .details_tile {
-  padding-block: 0.5rem 1.5rem;
+  padding-block: 1rem 1.5rem;
 
   display: flex;
   gap: 20px;
@@ -236,7 +259,9 @@
     margin-right: 0;
   }
 }
+
 @media screen and (max-width: 1023.98px) {
 }
+
 @media screen and (max-width: 1439.98px) {
 }

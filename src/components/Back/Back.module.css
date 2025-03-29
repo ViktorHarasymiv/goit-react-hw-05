@@ -1,5 +1,8 @@
 .button_back_page {
-  text-decoration: underline;
+  z-index: 9999;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 
   font-weight: 300;
   letter-spacing: 0.1em;

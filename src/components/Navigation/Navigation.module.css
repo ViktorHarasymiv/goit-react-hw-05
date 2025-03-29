@@ -1,14 +1,25 @@
 .header {
-  padding: 2rem;
+  z-index: 99993;
+  position: absolute;
+
+  padding-inline: 2em;
+  width: 100%;
+  height: var(--header-height);
 
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 35px;
 
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 25px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.9);
+
+  /*
+  border-bottom: 0.5px rgb(163, 12, 93) solid; */
 
   line-height: 1;
+
+  background-color: #000;
 }
 
 .nav {
