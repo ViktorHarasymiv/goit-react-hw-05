@@ -10,7 +10,7 @@ interface NotesHttpResponse {
 interface NewNote {
   title: string;
   content: string;
-  tag: "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
+  tag: string;
 }
 
 axios.defaults.baseURL = "https://notehub-public.goit.study/api";
@@ -21,14 +21,16 @@ export const fetchNotes = async (
   query: string,
   page: number
 ): Promise<NotesHttpResponse> => {
-  const response = await axios.get<NotesHttpResponse>(
-    `/notes?${query !== "" ? `search=${query}` : `page=${page}`}`,
-    {
-      headers: {
-        Authorization: import.meta.env.VITE_NOTEHUB_TOKEN,
-      },
-    }
-  );
+  const PARAMS = new URLSearchParams({
+    ...(query !== "" ? { search: query } : {}),
+    page: page.toString(),
+  });
+
+  const response = await axios.get<NotesHttpResponse>(`/notes?${PARAMS}`, {
+    headers: {
+      Authorization: import.meta.env.VITE_NOTEHUB_TOKEN,
+    },
+  });
 
   return response.data;
 };

@@ -14,8 +14,8 @@ interface Values {
   tag: "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
 }
 
-interface ModalProps {
-  onCloseModal: () => void;
+interface NoteFormProps {
+  onClose: () => void;
 }
 
 // INITIAL CONST
@@ -28,19 +28,21 @@ const initialValues: Values = {
 
 // VALIDATION SCHEMA
 
-const OrderFormSchema = Yup.object().shape({
+const noteShema = Yup.object().shape({
   title: Yup.string()
-    .min(2, "First name must be at least 2 characters")
-    .max(30, "First name is too long")
-    .required("First name is required"),
-  content: Yup.string()
-    .min(4, "Invalid content format")
-    .max(30, "Content is too long")
-    .required("Content is required"),
-  tag: Yup.string().required("Tag is required"),
+    .min(3, "Title must be at least 3 characters")
+    .max(50, "Title is too long")
+    .required("Title is required"),
+  content: Yup.string().max(500, "Content is too long"),
+  tag: Yup.string()
+    .oneOf(
+      ["Todo", "Work", "Personal", "Meeting", "Shopping"],
+      "Invalid category"
+    )
+    .required("Tag is required"),
 });
 
-export default function NoteForm({ onCloseModal }: ModalProps) {
+export default function NoteForm({ onClose }: NoteFormProps) {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -54,7 +56,7 @@ export default function NoteForm({ onCloseModal }: ModalProps) {
     mutation.mutate(values, {
       onSuccess: () => {
         action.resetForm();
-        onCloseModal();
+        onClose();
       },
     });
   };
@@ -62,7 +64,7 @@ export default function NoteForm({ onCloseModal }: ModalProps) {
     <Formik
       onSubmit={handleSubmit}
       initialValues={initialValues}
-      validationSchema={OrderFormSchema}
+      validationSchema={noteShema}
     >
       <Form className={css.form}>
         <div className={css.formGroup}>
@@ -74,6 +76,7 @@ export default function NoteForm({ onCloseModal }: ModalProps) {
         <div className={css.formGroup}>
           <label htmlFor="content">Content</label>
           <Field
+            as="textarea"
             id="content"
             name="content"
             rows={8}
@@ -95,14 +98,10 @@ export default function NoteForm({ onCloseModal }: ModalProps) {
         </div>
 
         <div className={css.actions}>
-          <button
-            onClick={onCloseModal}
-            type="button"
-            className={css.cancelButton}
-          >
+          <button onClick={onClose} type="button" className={css.cancelButton}>
             Cancel
           </button>
-          <button type="submit" className={css.submitButton} disabled={false}>
+          <button type="submit" className={css.submitButton}>
             Create note
           </button>
         </div>

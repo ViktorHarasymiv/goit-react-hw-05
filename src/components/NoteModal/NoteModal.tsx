@@ -6,20 +6,20 @@ import { createPortal } from "react-dom";
 import css from "./NoteModal.module.css";
 
 interface ModalProps {
-  onCloseModal: () => void;
+  onClose: () => void;
 }
 
-export default function NoteModal({ onCloseModal }: ModalProps) {
+export default function NoteModal({ onClose }: ModalProps) {
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
-      onCloseModal();
+      onClose();
     }
   };
 
   useEffect(() => {
     const backdropClose = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        onCloseModal();
+        onClose();
       }
     };
     document.addEventListener("keydown", backdropClose);
@@ -29,7 +29,7 @@ export default function NoteModal({ onCloseModal }: ModalProps) {
       document.removeEventListener("keydown", backdropClose);
       document.body.style.overflow = "";
     };
-  }, [onCloseModal]);
+  }, [onClose]);
 
   return createPortal(
     <div
@@ -39,7 +39,7 @@ export default function NoteModal({ onCloseModal }: ModalProps) {
       aria-modal="true"
     >
       <div className={css.modal}>
-        <NoteForm onCloseModal={onCloseModal}></NoteForm>
+        <NoteForm onClose={onClose}></NoteForm>
       </div>
     </div>,
     document.body

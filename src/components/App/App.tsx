@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
+import { useDebounce } from "use-debounce";
+
 import { fetchNotes } from "../../services/noteService";
 
 import css from "./App.module.css";
@@ -18,9 +20,10 @@ function App() {
   const closeModal = () => setIsModalOpen(false);
 
   // Queries
+  const [debouncedQuery] = useDebounce(query, 400);
 
   const { data, isSuccess } = useQuery({
-    queryKey: ["notes", query, page],
+    queryKey: ["notes", debouncedQuery, page],
     queryFn: () => fetchNotes(query, page),
     placeholderData: keepPreviousData,
   });
@@ -33,7 +36,7 @@ function App() {
   return (
     <div className={css.app}>
       <header className={css.toolbar}>
-        <SearchBox updateQuery={updateQuery} />
+        <SearchBox query={query} updateQuery={updateQuery} />
         {data?.totalPages && data.totalPages >= 1 ? (
           <Pagination
             totalPage={data?.totalPages}
@@ -47,7 +50,7 @@ function App() {
           Create note +
         </button>
 
-        {isModalOpen && <NoteModal onCloseModal={closeModal} />}
+        {isModalOpen && <NoteModal onClose={closeModal} />}
       </header>
       <main>
         {isSuccess && data.notes.length > 0 && (
