@@ -3,18 +3,18 @@ import css from "./Pagination.module.css";
 
 interface PaginationProps {
   page: number;
-  totalPage: number;
+  totalPages: number;
   onPageChange: (page: number) => void;
 }
 
 export default function Pagination({
-  totalPage,
+  totalPages,
   page,
   onPageChange,
 }: PaginationProps) {
   return (
     <ReactPaginate
-      pageCount={totalPage}
+      pageCount={totalPages}
       pageRangeDisplayed={5}
       marginPagesDisplayed={1}
       onPageChange={({ selected }) => onPageChange(selected + 1)}

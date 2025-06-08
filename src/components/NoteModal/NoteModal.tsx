@@ -5,11 +5,11 @@ import { createPortal } from "react-dom";
 
 import css from "./NoteModal.module.css";
 
-interface ModalProps {
+interface NoteModalProps {
   onClose: () => void;
 }
 
-export default function NoteModal({ onClose }: ModalProps) {
+export default function NoteModal({ onClose }: NoteModalProps) {
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       onClose();

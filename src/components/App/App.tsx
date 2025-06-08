@@ -24,7 +24,7 @@ function App() {
 
   const { data, isSuccess } = useQuery({
     queryKey: ["notes", debouncedQuery, page],
-    queryFn: () => fetchNotes(query, page),
+    queryFn: () => fetchNotes(debouncedQuery, page),
     placeholderData: keepPreviousData,
   });
 
@@ -37,9 +37,9 @@ function App() {
     <div className={css.app}>
       <header className={css.toolbar}>
         <SearchBox query={query} updateQuery={updateQuery} />
-        {data?.totalPages && data.totalPages >= 1 ? (
+        {data?.totalPages && data.totalPages > 1 ? (
           <Pagination
-            totalPage={data?.totalPages}
+            totalPages={data?.totalPages}
             page={page}
             onPageChange={setPage}
           />
@@ -53,9 +53,7 @@ function App() {
         {isModalOpen && <NoteModal onClose={closeModal} />}
       </header>
       <main>
-        {isSuccess && data.notes.length > 0 && (
-          <NoteList noteData={data.notes} />
-        )}
+        {isSuccess && data.notes.length > 0 && <NoteList notes={data.notes} />}
       </main>
     </div>
   );

@@ -6,10 +6,10 @@ import css from "./NoteList.module.css";
 import { deleteNote } from "../../services/noteService";
 
 interface NoteListProps {
-  noteData: Note[];
+  notes: Note[];
 }
 
-export default function NoteList({ noteData }: NoteListProps) {
+export default function NoteList({ notes }: NoteListProps) {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -24,7 +24,7 @@ export default function NoteList({ noteData }: NoteListProps) {
   return (
     <ul className={css.list}>
       {/* Набір елементів списку нотатків */}
-      {noteData.map((note, index) => {
+      {notes.map((note, index) => {
         return (
           <li key={index} className={css.listItem}>
             <h2 className={css.title}>{note.title}</h2>
